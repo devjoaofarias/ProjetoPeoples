@@ -1,0 +1,9 @@
+CREATE DATABASE T_Peoples
+
+USE T_Peoples
+
+CREATE TABLE Funcionarios (
+IdFuncionarios		INT PRIMARY KEY IDENTITY,
+Nome				VARCHAR(150) NOT NULL,
+Sobrenome			VARCHAR(150) NOT NULL
+)
