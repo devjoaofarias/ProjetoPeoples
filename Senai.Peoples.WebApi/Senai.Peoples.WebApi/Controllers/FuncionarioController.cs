@@ -51,9 +51,14 @@ namespace Senai.Peoples.WebApi.Controllers
 
         [HttpGet("{id}")]
         public IActionResult GetById (int id)
-        {
-            FuncionarioDomain funcionario = new FuncionarioDomain();
-            return StatusCode(200);
+        { 
+            FuncionarioDomain funcionario = _funcionarioRepository.BuscarPorId(id);
+            if (funcionario == null)
+            {
+                return NotFound("Nenhum funcionario foi encontrado");
+            }
+                    return Ok(funcionario);
+                }
         }
     }
-}
+
