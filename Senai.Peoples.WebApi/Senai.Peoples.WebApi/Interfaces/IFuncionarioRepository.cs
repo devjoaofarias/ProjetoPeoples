@@ -16,5 +16,7 @@ namespace Senai.Peoples.WebApi.Interfaces
         void Deletar(int id);
 
         FuncionarioDomain BuscarPorId(int id);
+
+        void Atualizar(FuncionarioDomain funcionario);
     }
 }

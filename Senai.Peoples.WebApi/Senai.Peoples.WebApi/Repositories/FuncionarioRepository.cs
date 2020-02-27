@@ -116,6 +116,25 @@ namespace Senai.Peoples.WebApi.Repositories
 
             }
         }
+
+        public void Atualizar(FuncionarioDomain funcionario)
+        {
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                string queryAtaulizar = "UPDATE Funcionarios SET Nome = @Nome, Sobrenome = @Sobrenome WHERE IdFuncionarios = @Id";
+
+                using (SqlCommand cmd = new SqlCommand(queryAtaulizar, con))
+                {
+                    con.Open();
+
+                    cmd.Parameters.AddWithValue("@Nome", funcionario.Nome);
+                    cmd.Parameters.AddWithValue("@Sobrenome", funcionario.Sobrenome);
+                    cmd.Parameters.AddWithValue("Id", funcionario.IdFuncionario);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
     

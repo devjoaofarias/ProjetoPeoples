@@ -59,6 +59,37 @@ namespace Senai.Peoples.WebApi.Controllers
             }
                     return Ok(funcionario);
                 }
+
+        [HttpPut]
+        public IActionResult PutIdCorpo(FuncionarioDomain funcionarios)
+        {
+            FuncionarioDomain filmeBuscado = _funcionarioRepository.BuscarPorId(funcionarios.IdFuncionario);
+
+            if (filmeBuscado != null)
+            {
+                try
+                {
+                    _funcionarioRepository.Atualizar(funcionarios);
+
+                    return NoContent();
+                }
+                catch (Exception erro)
+                {
+                    return BadRequest(erro);
+                }
+
+            }
+
+
+            return NotFound
+                (
+                    new
+                    {
+                        mensagem = "Funcionario não encontrado",
+                        erro = true
+                    }
+                );
         }
+    }
     }
 
