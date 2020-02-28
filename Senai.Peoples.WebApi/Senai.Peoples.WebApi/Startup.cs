@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Senai.Peoples.WebApi
+namespace senai.Peoples.WebApi
 {
     public class Startup
     {
@@ -15,11 +15,12 @@ namespace Senai.Peoples.WebApi
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            // Adiciona o MVC ao projeto
-            services.AddMvc()
+            services
+                // Adiciona o MVC ao projeto
+                .AddMvc()
 
-            // Define a versão do .NET Core
-            .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
+                // Define a versão do .NET Core
+                .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -30,7 +31,7 @@ namespace Senai.Peoples.WebApi
                 app.UseDeveloperExceptionPage();
             }
 
-            // Habilita o uso do MVC
+            // Define o uso do MVC
             app.UseMvc();
         }
     }
